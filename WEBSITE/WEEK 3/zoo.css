@@ -13,7 +13,7 @@ body{
     z-index: 500;
     width: 100%;
     height: 80px;
-    background-image: url(zooimages/wood-bg.png);
+    background-image: url(pineCityZooImages/images/wood-bg.png);
     background-repeat: repeat-x;
 }
 
@@ -81,7 +81,7 @@ body{
 
 #main{
     margin-top: 119px;
-    background: url(zooimages/map-blur.png);
+    background: url(pineCityZooImages/images/map-blur.png);
     background-repeat: repeat-y;
 }
 #content{
@@ -145,3 +145,56 @@ a.info-box{
 #info-box-full h3{
     text-align: center;
 }
+
+
+/*=================WEATHER =================*/
+
+img.info-box-weather-icon{
+    height: 30px;
+    width: 30px !important;
+    margin: 10px;
+    float: left;
+}
+
+h1.info-box-weather-icon{
+    font-size: 65px;
+    font-size: 200;
+    padding: 0;
+    margin: 0;
+
+}
+
+table{
+    width: 100%;
+
+}
+td{
+    border-top: 1px solid #131313;
+
+}
+
+/*=================FORM =======*/
+
+input{
+    width: 100%;
+    height: 25px;
+    margin: 12px 0;
+    border: 1px solid #929292;
+}
+
+textarea{width: 100%;
+height: 65px;
+margin: 12px 0;
+border: 1px solid #929292;}
+
+.button{
+display: block;
+width:100%;
+background-color: forestgreen;
+text-decoration: none;
+text-align: center;
+color: white;
+font-size: 16px;
+font-weight: 600;
+margin: 12px 0;
+padding: 8px 0;}
