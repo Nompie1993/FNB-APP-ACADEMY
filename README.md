@@ -57,10 +57,6 @@ Each animal page follows the same format:
   - Behavior facts
 - "WHERE WILL YOU FIND THEM?" section with enclosure location
 
-### insecthouse.html
-- Information about the insect house attraction
-- Describes the importance of insects in ecosystems
-- Features various insect species on display
 
 ## Image Files
 All images are stored in the `zooimages/` directory and include:
@@ -77,9 +73,3 @@ All pages use a common stylesheet: `zoo.css`
 - Each animal card links to its corresponding detailed page
 - Bottom navigation tabs are also placeholders
 
-## Future Improvements
-1. Implement functional navigation links
-2. Add the missing animal pages (lion.html, warthog.html)
-3. Create the MAP and PLACES pages
-4. Implement the WEATHER and FEEDBACK functionality
-5. Make the website responsive for mobile devices
