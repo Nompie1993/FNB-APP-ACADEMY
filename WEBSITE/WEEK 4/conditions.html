@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JAVASCRIPT</title>
+</head>
+<body>
+    <h1 id="output"></h1>
+    <p  id="paragraph1"></p>
+    <script>
+        var userInputPassword = "007";
+        // Simulating user input for demonstration purposes
+        var actualPassword = "008";
+        // In a real application, you would get this from an input field
+        if(userInputPassword == actualPassword){
+        document.getElementById("output").innerHTML = ("correct password");
+        }else{
+        document.getElementById("output").innerHTML = ("incorrect password");
+        }
+</script>
+</body>
+</html>
