@@ -10,6 +10,14 @@
             <td colspan="4">
                 <input type="text" id="inputBox" value="0">
             </td>
+             <tr>
+    
+             <tr>
+            <td class="functionButton" onclick="squareRoot()">√</td>
+            <td class="functionButton" onclick="powerOfTwo()">x²</td>
+            <td class="functionButton" onclick="powerOfThree()">x³</td>
+            <td class="functionButton" onclick="percentage()">%</td>
+        </tr>
         </tr>
         <tr>
             <td class="digitButton" onclick="digitBtnPressed(7)">7</td>
@@ -44,6 +52,7 @@
         var newLine =true; //boolean to track if a new line is being started
         var value1;
         var currentOperator;
+        var hasDecimal = false;
 
         //event handler for digit buttons
         //this function is called when a digit button is pressed
@@ -51,9 +60,24 @@
             if (newLine) {
                 document.getElementById("inputBox").value = button;
               newLine = false;
+               hasDecimal = false;
             }else{
             var currentValue = document.getElementById("inputBox").value;
             document.getElementById("inputBox").value = currentValue + button;
+            }
+
+        }
+        //event handler for the decimal button
+        //this function is called when the decimal button is pressed
+        function decimalBtnPressed() {
+            if (newLine) {
+                document.getElementById("inputBox").value = "0.";
+                newLine = false;
+                hasDecimal = true;
+            } else if (!hasDecimal) {
+                var currentValue = document.getElementById("inputBox").value;
+                document.getElementById("inputBox").value = currentValue + ".";
+                hasDecimal = true;
             }
         }
         //event handler for the AC button
@@ -61,18 +85,39 @@
           function btnACPressed() {
             document.getElementById("inputBox").value = "0";
             newLine = true;
+             hasDecimal = false;
+            value1 = undefined;
+            currentOperator = undefined;
+        }
+        //event handler for the C button
+        //this function is called when the C button is pressed
+        //this function clears the current entry in the input box
+
+         function clearEntry() {
+            document.getElementById("inputBox").value = "0";
+            newLine = true;
+            hasDecimal = false;
+        }
+
+        //event handler for the operator buttons    
+        //this function is called when an operator button is pressed
+          function toggleSign() {
+            var currentValue = parseFloat(document.getElementById("inputBox").value);
+            document.getElementById("inputBox").value = -currentValue;
+            newLine = false;
         }
 
         function operatorBtnPressed(operator) {
             currentOperator = operator;
-            value1 = parseInt(document.getElementById("inputBox").value);
+            value1 = parseFloat(document.getElementById("inputBox").value);
             newLine = true;
+            hasDecimal = false;
         }
 
         //event handler for the equals button
         //this function is called when the equals button is pressed
         function equalsBtnPressed() {
-            var value2 = parseInt(document.getElementById("inputBox").value);
+            var value2 = parseFloat(document.getElementById("inputBox").value);
             var finalTotal;
             switch (currentOperator) {
                 case '+':
@@ -95,6 +140,33 @@
             value1 =0;
             newLine = true;
         }   
+             function squareRoot() {
+            var value = parseFloat(document.getElementById("inputBox").value);
+            if (value >= 0) {
+                document.getElementById("inputBox").value = Math.sqrt(value);
+            } else {
+                document.getElementById("inputBox").value = "Error";
+            }
+            newLine = true;
+        }
+        
+        function powerOfTwo() {
+            var value = parseFloat(document.getElementById("inputBox").value);
+            document.getElementById("inputBox").value = Math.pow(value, 2);
+            newLine = true;
+        }
+        
+        function powerOfThree() {
+            var value = parseFloat(document.getElementById("inputBox").value);
+            document.getElementById("inputBox").value = Math.pow(value, 3);
+            newLine = true;
+        }
+        
+        function percentage() {
+            var value = parseFloat(document.getElementById("inputBox").value);
+            document.getElementById("inputBox").value = value / 100;
+            newLine = true;
+        }
             
         
     </script>
