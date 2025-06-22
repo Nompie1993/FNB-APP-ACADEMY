@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add Contact</title>
+</head>
+<body>
+    <br/> 
+    <form id="editForm">
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" placeholder="First Name" required><br/>
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" placeholder="Last Name" required><br/>
+        <label for="mobile">Mobile:</label>
+        <input type="text" id="mobile" name="mobile" placeholder="Mobile" required><br/>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" placeholder="Email" required><br/>
+        <label for="avatar">Avatar Image:</label>
+        <input type="file" id="avatar" name="avatar" accept="image/*"><br/>
+        <button type="submit" id="submitForm">Submit</button>
+    </form>
+    <br/>
+    <button id="homeLink" type="button">Home</button>
+    
+    <script src="config.js"></script>
+    <script>
+        document.getElementById("editContact").addEventListener("click", editContact);
+        document.getElementById("editForm").addEventListener("submit", submitForm);
+        document.getElementById("homeLink").addEventListener("click", homeLink);
+
+        function submitForm(e) {
+            e.preventDefault(); // Prevent the default form submission
+            
+            const formData = new FormData(document.getElementById("editForm"));
+            formData.append('apiKey', apiKey); // Append the API key to the form data
+
+            fetch(rootPath + 'controller/insert-contact/', {
+                method: 'POST',
+                headers: {'Accept': 'application/json, *_*'},
+                body: formData
+            })
+            .then(function(response) {
+                return response.text();
+            })
+            .then(function(data) {
+                if (data === "1") {
+                    alert("Contact added successfully!");
+                    homeLink(); // Call the function to redirect to the contact list page
+                } else {
+                    alert("Error: " + data);
+                }
+            })
+            .catch(function(error) {
+                alert("Error: " + error);
+            });
+        }
+        
+        function homeLink() {
+            window.open("index.html", "_self");  // Redirect to the contact list page
+        }
+
+        function editContact(id) {
+            window.open("edit-contact.html?id=" + id, "_self"); // Redirect to the "Edit Contact" page with the contact ID
+        }
+    </script>
+</body>
+</html>
